@@ -1457,11 +1457,11 @@ SU1                         0.9        635.4
 [TIMESERIES]
 ;;Name           Date       Time       Value     
 ;;-------------- ---------- ---------- ----------
-RAINDAT_1              FILE "C:/Users/xy/Documents/uni/000my_packages/noSWMM3/inst/extdata/data/2014.08.31_08.34.00_rainRG1.dat"
+RAINDAT_1              FILE "D:/zzzGit/noSWMM/noSWMM3/inst/extdata/data/2014.08.31_08.34.00_rainRG1.dat"
 
-RAINDAT_2              FILE "C:/Users/xy/Documents/uni/000my_packages/noSWMM3/inst/extdata/data/2014.08.31_08.34.00_rainRG2.dat"
+RAINDAT_2              FILE "D:/zzzGit/noSWMM/noSWMM3/inst/extdata/data/2014.08.31_08.34.00_rainRG2.dat"
 
-RAINDAT_3              FILE "C:/Users/xy/Documents/uni/000my_packages/noSWMM3/inst/extdata/data/2014.08.31_08.34.00_rainRG3.dat"
+RAINDAT_3              FILE "D:/zzzGit/noSWMM/noSWMM3/inst/extdata/data/2014.08.31_08.34.00_rainRG3.dat"
 
 [REPORT]
 INPUT      NO
