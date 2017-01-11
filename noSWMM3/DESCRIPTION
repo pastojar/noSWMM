@@ -1,0 +1,33 @@
+Package: noSWMM3
+Title: Letnany w/o unnecessary parameters - only 3 now
+Version: 0.0.0.9000
+Authors@R: person("Jaroslav", "Pastorek", email = "first.last@example.com", role = c("aut", "cre"))
+Description: the same as before, plus:
+    #stage3
+     removed parameters imp and pc0
+    #stage3.4p
+     removed parameter width
+    #stage3.3p
+     removed parameter slope
+     increased y.ref_Q (hyp. par. transfm.)
+     replaced lower bounds by GenSA optimization (par.init*0.1 instead of vector of 0.1)
+    #noSWMM2
+     added a bucket model as an alternative for the SWMM model
+     moved definitions of hydr. parameters prior distributions into the main script
+    #noSWMM2.transALL
+     transforming all parameters of the prior distributions of sd_B and sd_E
+    #noSWMM3
+     added a 2 cascade model (instead of 1)    
+Depends: R (>= 3.2.2)
+License: What license is it under?
+LazyData: true
+Imports:
+    kimisc,
+    DiceDesign,
+    sensitivity,
+    GenSA,
+    adaptMCMC,
+    MHadaptive,
+    truncnorm,
+    zoo,
+    deSolve

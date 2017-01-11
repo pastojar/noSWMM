@@ -1,0 +1,142 @@
+[TITLE]
+
+[OPTIONS]
+FLOW_UNITS           LPS
+INFILTRATION         HORTON
+FLOW_ROUTING         DYNWAVE
+START_DATE           whatever
+START_TIME           whatever
+REPORT_START_DATE    whatever
+REPORT_START_TIME    whatever
+END_DATE             whatever
+END_TIME             whatever
+SWEEP_START          01/01
+SWEEP_END            12/31
+DRY_DAYS             0
+REPORT_STEP          00:02:00
+WET_STEP             00:05:00
+DRY_STEP             01:00:00
+ROUTING_STEP         0:00:05 
+ALLOW_PONDING        NO
+INERTIAL_DAMPING     PARTIAL
+VARIABLE_STEP        0.75
+LENGTHENING_STEP     1
+MIN_SURFAREA         0
+NORMAL_FLOW_LIMITED  BOTH
+SKIP_STEADY_STATE    NO
+FORCE_MAIN_EQUATION  H-W
+LINK_OFFSETS         DEPTH
+MIN_SLOPE            0
+
+[EVAPORATION]
+;;Type       Parameters
+;;---------- ----------
+CONSTANT     0.0
+DRY_ONLY     NO
+
+[RAINGAGES]
+;;               Rain      Time   Snow   Data      
+;;Name           Type      Intrvl Catch  Source    
+;;-------------- --------- ------ ------ ----------
+RG_AVG           INTENSITY 0:01   1.0    TIMESERIES RAINDAT            
+
+[SUBCATCHMENTS]
+;;                                                 Total    Pcnt.             Pcnt.    Curb     Snow    
+;;Name           Raingage         Outlet           Area     Imperv   Width    Slope    Length   Pack    
+;;-------------- ---------------- ---------------- -------- -------- -------- -------- -------- --------
+sub_aggr         RG_AVG           aggr_1           123.53   52.41    5719.97  5.45     0                        
+
+[SUBAREAS]
+;;Subcatchment   N-Imperv   N-Perv     S-Imperv   S-Perv     PctZero    RouteTo    PctRouted 
+;;-------------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+sub_aggr         0.01242    0.18       2.57       5.05       36.9       OUTLET    
+
+[INFILTRATION]
+;;Subcatchment   MaxRate    MinRate    Decay      DryTime    MaxInfil  
+;;-------------- ---------- ---------- ---------- ---------- ----------
+sub_aggr         80         15         4          7          0         
+
+[JUNCTIONS]
+;;               Invert     Max.       Init.      Surcharge  Ponded    
+;;Name           Elev.      Depth      Depth      Depth      Area      
+;;-------------- ---------- ---------- ---------- ---------- ----------
+aggr_1           255        6          0          0          0         
+
+[OUTFALLS]
+;;               Invert     Outfall    Stage/Table      Tide
+;;Name           Elev.      Type       Time Series      Gate
+;;-------------- ---------- ---------- ---------------- ----
+aggr_outfall     241.5      FREE                        NO
+
+[CONDUITS]
+;;               Inlet            Outlet                      Manning    Inlet      Outlet     Init.      Max.      
+;;Name           Node             Node             Length     N          Offset     Offset     Flow       Flow      
+;;-------------- ---------------- ---------------- ---------- ---------- ---------- ---------- ---------- ----------
+aggr_conduit     aggr_1           aggr_outfall     1700       0.011      0          0          0          0         
+
+[XSECTIONS]
+;;Link           Shape        Geom1            Geom2      Geom3      Geom4      Barrels   
+;;-------------- ------------ ---------------- ---------- ---------- ---------- ----------
+aggr_conduit     CIRCULAR     1.5              0          0          0          1                    
+
+[LOSSES]
+;;Link           Inlet      Outlet     Average    Flap Gate 
+;;-------------- ---------- ---------- ---------- ----------
+
+[TIMESERIES]
+;;Name           Date       Time       Value     
+;;-------------- ---------- ---------- ----------
+RAINDAT             FILE "rain.dat"
+
+[REPORT]
+INPUT      NO
+CONTROLS   NO
+SUBCATCHMENTS sub_aggr
+NODES aggr_outfall
+LINKS aggr_conduit
+
+[TAGS]
+
+[MAP]
+DIMENSIONS -737880.502 -1039893.360 -733389.366 -1036059.431
+Units      Meters
+
+[COORDINATES]
+;;Node           X-Coord            Y-Coord           
+;;-------------- ------------------ ------------------
+aggr_1           -738370.796        -1037059.124      
+aggr_outfall     -736988.242        -1036644.358      
+
+[VERTICES]
+;;Link           X-Coord            Y-Coord           
+;;-------------- ------------------ ------------------
+
+[Polygons]
+;;Subcatchment   X-Coord            Y-Coord           
+;;-------------- ------------------ ------------------
+sub_aggr         -737073.322        -1038090.722      
+sub_aggr         -737551.899        -1038159.850      
+sub_aggr         -737514.676        -1038760.729      
+sub_aggr         -737727.377        -1039441.371      
+sub_aggr         -738163.413        -1038925.572      
+sub_aggr         -738429.289        -1039042.557      
+sub_aggr         -738423.971        -1038883.032      
+sub_aggr         -738179.365        -1038739.459      
+sub_aggr         -738131.508        -1038441.678      
+sub_aggr         -738306.986        -1038292.788      
+sub_aggr         -738631.354        -1038462.948      
+sub_aggr         -738673.894        -1038345.963      
+sub_aggr         -737971.982        -1037851.434      
+sub_aggr         -737647.614        -1036947.456      
+sub_aggr         -737169.037        -1036968.726      
+sub_aggr         -737014.829        -1036702.850      
+sub_aggr         -737068.005        -1037112.299      
+sub_aggr         -737519.993        -1037080.394      
+sub_aggr         -737573.169        -1037846.116      
+sub_aggr         -737083.957        -1037936.514      
+
+[SYMBOLS]
+;;Gage           X-Coord            Y-Coord           
+;;-------------- ------------------ ------------------
+RG_AVG           -738280.398        -1037388.810      
+
