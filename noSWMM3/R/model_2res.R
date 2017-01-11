@@ -153,7 +153,7 @@ model.2res <- function(par, L, inp.file, out.data)
   names(yM) = L
   
   
-  end.t <- proc.time(); time.taken <- end.t - start.t; print(time.taken)
+  #end.t <- proc.time(); time.taken <- end.t - start.t; print(time.taken)
   
   return(yM)
 }
